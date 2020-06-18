@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <link href="animate.css" rel="stylesheet">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .img-style {
+            width: 100%;
+        }
+        .red {
+            width: 100%;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p class="red animated slideOutUp"></p>
+   <button onclick="getDeviceId()">获取deviceID</button>
+   <button onclick="getNetWorkInfo()">获取ip</button>
+   <button onclick="getDeviceModel()">获取model</button>
+   <button onclick="closeInputKeyboard()">关闭键盘</button>
+   <button onclick="vibrate()">震动</button>
+   <button onclick="callPhone()">打电话</button>
+   <button onclick="sendMsg()">发短信</button>
+    <div id="test1"></div>
+</div>
+<script>
+    
+    function getDeviceId() {
+        jsbridge.device.getDeviceId(function(data){
+            alert('success:'+JSON.stringify(data));
+        },function(data){
+            alert('fail:'+JSON.stringify(data));
+        });
+       
+    }
+
+    function getNetWorkInfo() {
+        jsbridge.device.getNetWorkInfo(function(data){
+            alert('success:'+JSON.stringify(data));
+        },function(data){
+            alert('fail:'+JSON.stringify(data));
+        });
+    
+    }
+    function getDeviceModel() {
+        jsbridge.device.getDeviceModel(function(data){
+            alert('success:'+JSON.stringify(data));
+        },function(data){
+            alert('fail:'+JSON.stringify(data));
+        });
+    
+    }
+    function closeInputKeyboard() {
+        jsbridge.device.closeInputKeyboard(function(data){
+            alert('success:'+JSON.stringify(data));
+        },function(data){
+            alert('fail:'+JSON.stringify(data));
+        });
+    }
+    function vibrate() {
+        jsbridge.device.vibrate(function(data){
+            alert('success:'+JSON.stringify(data));
+        },function(data){
+            alert('fail:'+JSON.stringify(data));
+        });
+    }
+
+    function callPhone() {
+        jsbridge.device.callPhone('10000',function(data){
+            alert('success:'+JSON.stringify(data));
+        },function(data){
+          alert('fail:'+JSON.stringify(data));
+        });
+    }
+
+    function sendMsg() {
+        jsbridge.device.sendMsg('10000',function(data){
+            alert('success:'+JSON.stringify(data));
+        },function(data){
+            alert('fail:'+JSON.stringify(data));
+        });
+    }
+
+</script>
+</body>
+</html>
